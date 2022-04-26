@@ -1,38 +1,68 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  padding:  0;
+  margin: 0;
+  box-sizing: border-box;
+  width: 100vw;
   min-height: 100vh;
+  background: #e0ebe0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+
+}
+#signin {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  box-align: center;
+
 }
 
-.App-link {
-  color: #61dafb;
+
+#topbar {
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  justify-content: space-around;
+  box-align: center;
+  align-items: center;
+  font-size: 6pc;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h3 {
+  margin-left: 10%;
+  margin-top: 5%;
 }
+
+ #account{
+  display: flex;
+  margin-top: 5ch;
+  padding: 5ch;
+  flex-direction: row;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  box-sizing: content-box;
+  box-align: center;
+  
+
+}  
+
+  #login, #register{
+  background-color: #f2f2f2;
+  min-width: 30%;
+  margin: 2pc;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-style: solid;
+  padding: 8ch;
+  border-color: #f2f2f2;
+  border-radius: 0.5pc;
+}
+
+.form-control {
+  margin-bottom: 2pc;
+}
+
+a{
+  margin-bottom: 1pc;
+} 
