@@ -4,11 +4,24 @@
   box-sizing: border-box;
   width: 100vw;
   min-height: 100vh;
-  background: #e0ebe0;
+  background: #e0ebe0; 
   display: flex;
   flex-direction: column;
+  background-image: url("background.jpg");
 
 }
+
+.content {
+  margin-top: 1pc;
+  padding: 2pc;
+  margin-left: 10%;
+  margin-right: 10%;
+  min-height: 90ch;
+  background-color: #ffffff;
+  color: rgb(94, 94, 94);
+}
+
+
 #signin {
   display: flex;
   justify-content: center;
@@ -17,7 +30,7 @@
 }
 
 
-#topbar {
+/* #topbar {
   width: 100%;
   height: 20vh;
   display: flex;
@@ -25,7 +38,7 @@
   box-align: center;
   align-items: center;
   font-size: 6pc;
-}
+} */
 
 h3 {
   margin-left: 10%;

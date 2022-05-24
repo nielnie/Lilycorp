@@ -1,18 +1,25 @@
 import './App.css';
+import React from 'react';
 import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase/auth";
 import {auth} from './firebase-config'
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {Container} from 'react-bootstrap';
 import {Card, Form, Button} from "react-bootstrap"
+import { Redirect } from 'react-router-dom';
+import { SettingsInputAntennaSharp } from '@material-ui/icons';
 
-function App() {
+function Login({setIsAuth}) {
+  
+  let navigate = useNavigate();
+  
 
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [loading, setLoading] =useState (true);
-
+  
   const [user, setUser] = useState({});
 
   useEffect(() => {
@@ -29,7 +36,12 @@ function App() {
   const register = async () => {
     try {
     const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
+      localStorage.setItem("isAuth", true);
+      setIsAuth(true);
+      navigate("/home");
+
     console.log(user);
+    
     }catch (error) {
       console.log(error.message);
     }
@@ -38,7 +50,12 @@ function App() {
   const login = async () => {
     try {
       const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+      navigate("/home");
+      localStorage.setItem("isAuth", true);
+      setIsAuth(true);
+
       console.log(user);
+
       }catch (error) {
         console.log(error.message);
       }
@@ -47,24 +64,27 @@ function App() {
   const logout = async () => {
     
     await signOut(auth);
+    localStorage.clear();
+    setIsAuth(false);
+    window.location.pathname = "/login";
     
     
   }
+
 
   
   return (
   
 
 
-    <div className="App">
+    <div className="Login">
 
-      <div id="topbar">
+      {/* <div id="topbar">
       <span class="material-icons"> LilyCrop</span>
-      </div>
+      </div> */}
 
-      <div style={{ borderTop: "2px solid #fff ", marginLeft: 20, marginRight: 20 }}></div>
+      {/* <div style={{ borderTop: "2px solid #fff ", marginLeft: 20, marginRight: 20 }}></div> */}
       
-      <h3>Account</h3>
 
       <div id="account">
 
@@ -113,4 +133,4 @@ function App() {
   );
 }
 
-export default App;
+export default Login; 

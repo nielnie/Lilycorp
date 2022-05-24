@@ -6,7 +6,7 @@ import {auth} from './firebase-config'
 import { useEffect, useState } from 'react';
 import {Container} from 'react-bootstrap';
 
-export default function Login (){
+export function Login2 (){
 
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
