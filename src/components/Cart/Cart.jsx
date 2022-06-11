@@ -3,12 +3,16 @@ import {Container, Typography, Button, Grid} from'@material-ui/core';
 import CartItem from './CartItem';
 import {Link} from 'react-router-dom';
 import { fontSize } from '@mui/system';
+import useStyles from './styles';
 
 
 
-function Cart ({cartList, deleteFromCart, getCart}) {
+function Cart ({cartList, deleteFromCart, getCart, updateQuantity}) {
 
+    const classes = useStyles();
     const key = 'name';
+    let payload = 0;
+    let sum = 0;
 
     if (!cartList) return 'Loading';
 
@@ -30,17 +34,19 @@ function Cart ({cartList, deleteFromCart, getCart}) {
 
     const fullCart =() => (
         <main>
-             <Grid container justifyContent="center" spacing={5}>
+             <Grid container justifyContent="center" spacing={5} className={classes.cardspadding}>
                     {uniqueProducts.map((product) => (
+                        sum = product.price * product.count,
+                        payload = payload + sum,
                         <Grid item key ={product.id} xs={12} s={6} md={4} lg={4}>
-                            <CartItem product={product} deleteFromCart={deleteFromCart} getCart={getCart} />
-                            </Grid>
+                            <CartItem product={product} deleteFromCart={deleteFromCart} getCart={getCart} updateQuantity={updateQuantity} />
+                        </Grid>
                     ))}
 
             </Grid>
             <div>
                 <Typography variant="h4">
-                    Subtotal: 
+                    Subtotal: {payload}
                 </Typography>
                 <Button size="large" variant="contained" color ="primary">
                     Checkout

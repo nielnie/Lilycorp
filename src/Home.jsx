@@ -25,7 +25,6 @@ function Home ({productList, onAddToCart, getCart}) {
 
         //Produktdaten an componente Product übergeben, welche einzelne Card darstellt
         <main>
-            <h1>Hey Home</h1>
                 <Grid container justifyContent="center" spacing={5}>
                     {productList.map((product) => (
                         <Grid item key ={product.id} xs={12} s={6} md={4} lg={4}>

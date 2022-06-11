@@ -8,7 +8,7 @@ import Topbar from './components/Topbar/Topbar';
 import Cart from './components/Cart/Cart'
 import { useState, useEffect } from 'react';
 import {db } from './firebase-config';
-import {getDocs, collection, addDoc, deleteDoc, doc} from 'firebase/firestore';
+import {getDocs, collection, addDoc, deleteDoc, doc, setDoc} from 'firebase/firestore';
 
 function App ()  {
     const [isAuth, setIsAuth] = useState (localStorage.getItem("isAuth"));
@@ -34,9 +34,20 @@ function App ()  {
          {await addDoc(cartCollectionRef, {name: product.name, price: product.price, class:product.class, count:product.count});}
         else {
             alert("schon im Warenkorb")
-        }
-         
+        }    
      }
+
+    const updateQuantity = async ( id, product, quantity) => {
+        if (quantity > 0)
+            {await setDoc(doc (db, "cart", id), {name: product.name, price: product.price, class:product.class, count:quantity});}
+        else {
+            deleteFromCart(product.id); 
+            getCart()
+        }  
+     
+        }
+    
+    
 
     const deleteFromCart = async (id) => {
         const data = doc (db, "cart", id);
@@ -73,7 +84,7 @@ function App ()  {
                     <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
                     <Route path="/home" element={<Home productList={productList} cartList={cartList} onAddToCart = {handleAddToCart} getCart={getCart} />} />
                     <Route path="/product" element={<Products />} />
-                    <Route path="/cart" element={<Cart cartList={cartList} deleteFromCart={deleteFromCart} getCart={getCart}/>}/>
+                    <Route path="/cart" element={<Cart cartList={cartList} deleteFromCart={deleteFromCart} getCart={getCart} updateQuantity={updateQuantity}/>}/>
                     </Routes>
 
                 </div>

@@ -7,9 +7,19 @@ export default makeStyles(() => ({
 
     },
 
+    image: {
+        width: '100%',
+        display: 'block',
+        margin: 'auto',
+        paddingTop: '10px',
+    },
+
+
     media: {
         height: 0,
-        paddingTop: '56.25%',
+        borderRadius: '8px',
+        paddingTop: '100%',
+        justifyContent: 'center'
 
     },
 
@@ -19,8 +29,9 @@ export default makeStyles(() => ({
 
     },
 
-    cardContent: {
+   cardContent: {
         display: 'flex',
+        flexDirection: 'row',
         justifyContent: 'space-between',
 
     },

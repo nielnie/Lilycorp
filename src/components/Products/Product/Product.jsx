@@ -5,10 +5,13 @@ import useStyles from './styles';
 import {getDocs, collection, doc, addDoc} from 'firebase/firestore';
 import {db } from '../../../firebase-config';
 import { useState, useEffect } from 'react';
+import plant from './plant.jpg';
+import Nick from './Nick.PNG';
+import Klaus from './Klaus.PNG'
 
 
 const Product = ({product, onAddToCart, getCart}) => {
-    const classes = useStyles;
+    const classes = useStyles();
 
     // const [cart, setCart] = useState ({});
     // const cartCollectionRef = collection (db, "cart");
@@ -29,20 +32,20 @@ const Product = ({product, onAddToCart, getCart}) => {
 
     //mittels material ui library einzelne Shopping.Cards Aufbau
     <Card className = {classes.root}>
-        <CardMedia className={classes.media} image ='' title={product.name}/>
+        <img src={Nick} alt="lilycorp" className={classes.image}/>
+        {/* <CardMedia className={classes.media} image={Nick} title ={product.name} /> */}
         <CardContent>
-            <div className = {classes.CardContent}>
+            <div className = {classes.cardContent}>
+                
                 <Typography variant = "h5" gutterBottom>
                     {product.name}  
                 </Typography>
                 <Typography variant = "h5" >
-                    {product.price}  
+                   {product.price} €
                 </Typography>
-
             </div>
             <Typography variant = "h6" color="textSecondary">
                 {product.class}
-                
             </Typography>
         </CardContent>
         <CardActions disableSpacing className={classes.cardActions}>
